@@ -8,6 +8,11 @@ import edu.store.service.ProductService;
 import edu.store.service.ProductSizeService;
 import edu.store.service.ProductTypeService;
 import edu.store.service.UserService;
+import edu.store.service.impl.DefaultProductService;
+import edu.store.service.impl.DefaultProductSizeService;
+import edu.store.service.impl.DefaultProductTypeService;
+import edu.store.service.impl.DefaultUserService;
+import edu.store.ui.Pages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,14 +39,14 @@ public class AdminController {
 
     @RequestMapping(value = "/admin")
     public String adminView() {
-        return "admin";
+        return Pages.PAGE_ADMIN;
     }
 
     @RequestMapping(value = "/admin/add", method = RequestMethod.GET)
     public String addItemView(Model model) {
         model.addAttribute("sizes", productSizeService.getProductSizes());
         model.addAttribute("types", productTypeService.getProductTypes());
-        return "add_item";
+        return Pages.PAGE_ADD_ITEM;
     }
 
     @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
@@ -71,7 +76,7 @@ public class AdminController {
         Product product = new Product(name, product_price, desc, photo, productType, productSizes);
         productService.addProduct(product);
 
-        return "redirect:/";
+        return Pages.REDIRECT;
     }
 
     @RequestMapping(value = "/admin/users")
@@ -79,7 +84,7 @@ public class AdminController {
         List<UserDTO> users;
         if (search == null) {
             model.addAttribute("users", userService.getUsers());
-            return "users";
+            return Pages.PAGE_USERS;
         } else {
             users = userService.getUsersByPhone(search);
             if (users.isEmpty()) {
@@ -91,12 +96,12 @@ public class AdminController {
         }
         model.addAttribute("search", search);
         model.addAttribute("users", users);
-        return "users";
+        return Pages.PAGE_USERS;
     }
 
     @RequestMapping(value = "/admin/products")
     public String adminProducts() {
-        return "admin_products";
+        return Pages.PAGE_ADMIN_PRODUCTS;
     }
 
 }

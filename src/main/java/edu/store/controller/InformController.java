@@ -1,5 +1,6 @@
 package edu.store.controller;
 
+import edu.store.ui.Pages;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -7,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class InformController {
     @RequestMapping("/campaign")
     public String campaign() {
-        return "campaign";
+        return Pages.PAGE_CAMPAIGN;
     }
 
     @RequestMapping("/about_us")
     public String aboutUs() {
-        return "about_us";
+        return Pages.PAGE_ABOUT_US;
     }
 
     @RequestMapping("/contacts")
     public String contacts() {
-        return "contacts";
+        return Pages.PAGE_CONTACT;
     }
 }

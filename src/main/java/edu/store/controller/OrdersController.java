@@ -2,6 +2,7 @@ package edu.store.controller;
 
 import edu.store.dto.OrderDTO;
 import edu.store.service.OrderService;
+import edu.store.ui.Pages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,18 +35,18 @@ public class OrdersController {
                 model.addAttribute("number", false);
             }
         }
-        return "orders";
+        return Pages.PAGE_ORDERS;
     }
 
     @GetMapping("/orders/{status}")
     public String getOrdersStatus(@PathVariable String status, Model model) {
         model.addAttribute("orders", orderService.findOrdersByStatus(status));
-        return "orders";
+        return Pages.PAGE_ORDERS;
     }
 
     @GetMapping(value = "/order/{id}")
     public String getOrderInfo(Model model, @PathVariable Long id) {
         model.addAttribute("order", orderService.findOrderById(id));
-        return "order_details";
+        return Pages.PAGE_ORDER_DETAILS;
     }
 }

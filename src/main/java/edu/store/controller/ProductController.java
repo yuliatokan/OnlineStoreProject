@@ -4,6 +4,7 @@ import edu.store.dto.ProductDTO;
 import edu.store.service.ProductService;
 import edu.store.service.ProductSizeService;
 import edu.store.service.ProductTypeService;
+import edu.store.ui.Pages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,7 +43,7 @@ public class ProductController {
         }
         model.addAttribute("types", productTypeService.getProductTypes());
         model.addAttribute("sizes", productSizeService.getProductSizes());
-        return "products";
+        return Pages.PAGE_PRODUCTS;
     }
 
     @RequestMapping(value = "/products/{type}")
@@ -55,20 +56,20 @@ public class ProductController {
         }
         model.addAttribute("types", productTypeService.getProductTypes());
         model.addAttribute("sizes", productSizeService.getProductSizes());
-        return "products";
+        return Pages.PAGE_PRODUCTS;
     }
 
     @RequestMapping(value = "item/{id}")
     public String getProduct(Model model, @PathVariable Long id) {
         model.addAttribute("product", productService.getProductById(id));
-        return "item";
+        return Pages.PAGE_PRODUCT;
     }
 
     @PostMapping(value = "/search")
     public String search(Model model, @RequestParam(name = "search") String search) {
         model.addAttribute("products", new ArrayList<ProductDTO>());
         if (search.isEmpty()) {
-            return "index";
+            return Pages.PAGE_WELCOME_PAGE;
         }
         List<ProductDTO> products = productService.getProducts(search);
         if (products.isEmpty()) {
@@ -84,6 +85,6 @@ public class ProductController {
         }
         model.addAttribute("types", productTypeService.getProductTypes());
         model.addAttribute("sizes", productSizeService.getProductSizes());
-        return "products";
+        return Pages.PAGE_PRODUCTS;
     }
 }

@@ -5,6 +5,7 @@ import edu.store.entity.UserAccount;
 import edu.store.entity.UserRole;
 import edu.store.service.EmailSenderService;
 import edu.store.service.UserService;
+import edu.store.ui.Pages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -52,7 +53,7 @@ public class UserController {
         } else {
             session.setAttribute("exist_user", false);
         }
-        return "index";
+        return Pages.PAGE_WELCOME_PAGE;
     }
 
     private boolean isAdmin(String role) {
@@ -61,17 +62,17 @@ public class UserController {
 
     @RequestMapping("/2doList")
     public String aut() {
-        return "2doList";
+        return Pages.PAGE_TO_DO_LIST;
     }
 
     @RequestMapping("/sign_in")
     public String sign_in() {
-        return "sign_in";
+        return Pages.PAGE_SIGN_IN;
     }
 
     @RequestMapping("/sign_up")
     public String sign_up() {
-        return "sign_up";
+        return Pages.PAGE_SIGN_UP;
     }
 
     @RequestMapping(value = "/newuser", method = RequestMethod.POST)
@@ -88,11 +89,11 @@ public class UserController {
                 !userService.addUser(email, passHash, name, phone, UserRole.USER)) {
             model.addAttribute("exists", true);
             model.addAttribute("email", email);
-            return "sign_up";
+            return Pages.PAGE_SIGN_UP;
         }
         authWithAuthManager(request, email, password);
         emailSenderService.sendWelcomeEmail(email);
-        return "redirect:/";
+        return Pages.REDIRECT;
     }
 
     public void authWithAuthManager(HttpServletRequest request, String username, String password) {
@@ -114,13 +115,13 @@ public class UserController {
                 model.addAttribute("user", dbUser);
             }
         }
-        return "edit_user";
+        return Pages.PAGE_EDIT_USER;
     }
 
     @RequestMapping(value = "/user/edit", method = RequestMethod.POST)
     public String editUser(@Valid UserDTO userDTO) {
         userService.updateUser(userDTO);
-        return "redirect:/";
+        return Pages.REDIRECT;
     }
 
 }
