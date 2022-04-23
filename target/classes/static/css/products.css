@@ -1,0 +1,461 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #FCEFF3;
+}
+
+.wrapper {
+    padding: 10px;
+    max-width: 100%;
+    height: 100vh;
+}
+
+.flower_box {
+    width: 65%;
+    position: absolute;
+    left: 63%;
+    -webkit-transform: translate(0%, 0%);
+    transform: translate(-50%, 0%);
+    background: rgba(255, 255, 255, 1);
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.2);
+}
+
+.image {
+    float: left;
+    width: 50%;
+    height: 100%;
+    display: block;
+    background: url("https://cdn.trendhunterstatic.com/thumbs/modern-vase.jpeg") -85px center;
+    background-size: cover;
+    border-radius: 8px 0 0 8px;
+}
+
+img {
+    width: 100%;
+}
+
+.image_ {
+    float: left;
+    width: 50%;
+    height: 100%;
+    display: block;
+    background-size: cover;
+    border-radius: 8px 0 0 8px;
+    overflow: hidden;
+}
+
+.text {
+    padding-top: 10%;
+    padding-left: 7%;
+    padding-right: 7%;
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.h1_prod {
+    color: rgba(71, 71, 71, 1);
+    font: normal 300 3.4vw/3.0vw 'Playfair Display', serif;
+    text-align: left;
+}
+
+.h5_prod {
+    text-transform: uppercase;
+    font: normal 300 1.3vw/3.0vw 'Raleway', sans-serif;
+    color: rgba(71, 71, 71, 0.3);
+    text-align: left;
+    letter-spacing: 3px;
+    margin-top: 4px;
+}
+
+.hr_prod {
+    display: block;
+    color: rgba(71, 71, 71, 0.1);
+    height: 2px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.div_p_prod {
+    width: 100%;
+    height: 80%;
+    margin-top: 0px;
+    margin-bottom: 7%;
+}
+
+.div_size {
+    height: 100%;
+}
+
+.p_prod {
+    text-align: left;
+    color: rgba(71, 71, 71, 0.35);
+    font: normal 300 1.9vw/2.6vw 'Playfair Display', serif;
+    margin-top: 5px;
+}
+
+.span_prod {
+    margin-top: 10%;
+    float: left;
+    font: normal 300 3.4vw/2.6vw 'Playfair Display', serif;
+    color: rgba(71, 71, 71, 1);
+}
+
+.button_prod {
+    float: right;
+    margin-top: 10%;
+    width: 50%;
+    height: 100%;
+    border-radius: 40px;
+    outline: 0;
+    border: 0;
+    background-color: rgba(125, 231, 202, 1);
+    color: rgba(255, 255, 255, 1);
+    font: normal 300 1.3vw/3.0vw 'Raleway', sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.button_prod:hover, .button_prod.selected {
+    cursor: pointer;
+    background-color: rgba(92, 200, 170, 1);
+    transition: background-color 0.5s ease-out;
+}
+
+.button_size {
+    padding: 4%;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    background-color: rgba(248, 186, 202, 0.65);
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    font: normal 300 1.3vw/1.0vw 'Raleway', sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.div_price {
+    width: 180px;
+    height: 190px;
+}
+
+.input_price {
+    margin-bottom: 15px;
+    width: 175px;
+    height: 40px;
+    border-radius: 30px;
+    outline: 0;
+    border: 0;
+    background-color: rgba(125, 231, 202, 1);
+    color: rgba(255, 255, 255, 1);
+    font: normal 300 20px/20px 'Playfair Display', serif;
+    text-align: center;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+
+.form-control:focus {
+    border-color: #d2d2d2;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(78, 57, 49, 0.18);
+}
+
+button:active, button:focus {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
+
+.wrapper_menu {
+    padding: 10px;
+    max-width: 250px;
+}
+
+.flower_box_menu {
+    min-width: 250px;
+    position: absolute;
+    left: 3%;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 8px;
+    text-align: center;
+    opacity: 0.9;
+    box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.text_menu {
+    padding: 55px 40px;
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.h1_menu {
+    color: rgb(60, 60, 60);
+    font: normal 300 30px/30px 'Playfair Display', serif;
+    margin-top: 8px;
+}
+
+.h5_menu {
+    font: normal 300 13px/30px 'Raleway', sans-serif;
+    color: rgba(71, 71, 71, 0.3);
+    letter-spacing: 3px;
+    margin-top: 4px;
+}
+
+.hr_menu {
+    display: block;
+    color: rgba(71, 71, 71, 0.1);
+    height: 2px;
+    margin: 3px;
+}
+
+.label_menu {
+    color: rgba(35, 35, 35, 0.64);
+    font: normal 300 20px/20px 'Playfair Display', serif;
+}
+
+.a_menu {
+    color: rgba(35, 35, 35, 0.64);
+    font: normal 300 20px/20px 'Playfair Display', serif;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.a_menu:active, .a_menu:hover {
+    color: rgba(35, 35, 35, 0.77);
+    font: normal 300 20px/20px 'Playfair Display', serif;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.div_check {
+    margin: 7px;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox {
+    margin-bottom: 10px;
+    margin-top: 8px;
+    margin-right: 5px;
+    margin-left: 15px;
+    padding: 5px;
+}
+
+.div_menu_sizes {
+    width: 250px;
+    <!--height: 150px;-->
+    overflow-y: scroll;
+}
+
+.div_menu_types {
+    width: 250px;
+    <!--height: 180px;-->
+    overflow-y: scroll;
+}
+
+.div_check input, .div_check label {
+    vertical-align: middle;
+}
+
+#circle {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #7DE7CA;
+    border-radius: 50%;
+    text-align: center;
+    right: 15%;
+    border: none;
+}
+
+#circle:hover {
+    background: #5CC8AA;
+}
+
+.i_ok {
+    color: white;
+    margin: 10px;
+    font-size: 20px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.flower_box_menu_small_button {
+    width: 0;
+    height: 0px;
+    visibility: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    padding: 3%;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    background-color: rgba(248, 186, 202, 0.65);
+    color: rgb(74, 41, 32);
+    text-align: center;
+    font: normal 400 2.0vw/1.6vw 'Playfair Display', serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+@media screen and (min-width: 481px) and (max-width: 980px) {
+    .flower_box_menu {
+        visibility: hidden;
+    }
+
+    .flower_box {
+        left: 50%;
+    }
+
+    .flower_box_menu_small_button {
+        visibility: visible;
+        margin-right: 40%;
+        margin-left: 40%;
+        width: 20%;
+        height: 40px;
+        position: static;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .flower_box_menu {
+        visibility: hidden;
+    }
+
+    .flower_box {
+        left: 50%;
+    }
+
+    .flower_box_menu_small_button {
+        visibility: visible;
+        margin-right: 40%;
+        margin-left: 40%;
+        width: 20%;
+        height: 40px;
+        position: static;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .flower_box {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .wrapper {
+        height: 110vh;
+    }
+}
+
+@media screen and (max-width: 250px) {
+    .wrapper {
+        height: 30vh;
+    }
+}
+
+@media screen and (min-width: 251px) and (max-width: 350px) {
+    .wrapper {
+        height: 40vh;
+    }
+}
+
+@media screen and (min-width: 351px) and (max-width: 450px) {
+    .wrapper {
+        height: 50vh;
+    }
+}
+
+@media screen and (min-width: 451px) and (max-width: 550px) {
+    .wrapper {
+        height: 60vh;
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 650px) {
+    .wrapper {
+        height: 70vh;
+    }
+}
+
+@media screen and (min-width: 651px) and (max-width: 750px) {
+    .wrapper {
+        height: 80vh;
+    }
+}
+
+@media screen and (min-width: 751px) and (max-width: 850px) {
+    .wrapper {
+        height: 80vh;
+    }
+}
+
+@media screen and (min-width: 851px) and (max-width: 950px) {
+    .wrapper {
+        height: 90vh;
+    }
+}
+
+
+
+@media screen and (max-height: 300px) {
+    .wrapper {
+        height: 180vh;
+    }
+}
+
+@media screen and (min-height: 301px) and (max-height: 400px) {
+    .wrapper {
+        height: 160vh;
+    }
+}
+
+@media screen and (min-height: 401px) and (max-height: 450px) {
+    .wrapper {
+        height: 140vh;
+    }
+}
+
+@media screen and (min-height: 451px) and (max-height: 550px) {
+    .wrapper {
+        height: 130vh;
+    }
+}
+
+@media screen and (min-height: 551px) and (max-height: 650px) {
+    .wrapper {
+        height: 110vh;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .menu_category{
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .menu_size{
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .flower_box_menu{
+        width: 99%;
+    }
+}

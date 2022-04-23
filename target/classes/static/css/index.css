@@ -1,0 +1,408 @@
+.container2 {
+    width: 100%;
+    display: block;
+    text-align: center;
+    position: relative;
+    padding: 0;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 80px;
+    max-width: 1600px;
+}
+
+#hero1 {
+    background-image: url('https://cdn.katespade.tech/na/assets/img/ks-homepage/JULY2019_Homepage_NA_Desktop_Hero.jpg');
+    background-size: 100% 100%;
+    width: 100%;
+}
+
+#hero1 .inner {
+    padding-top: 57.062%;
+}
+
+.textbox {
+    width: 300px;
+    height: 300px;
+    background-color: #FC7CA0;
+    position: absolute;
+    display: block;
+    top: 30%;
+    left: 10%;
+    border: 10px solid #F8BACA;
+}
+
+.text {
+    width: 100%;
+    display: block;
+    top: 20%;
+    text-align: center;
+    position: absolute;
+}
+
+.maintext {
+    padding: 0;
+    width: 100%;
+    margin: 0;
+    font-family: FuturaPTBook, Arial, sans-serif;
+    font-size: 70px;
+    line-height: .8;
+    letter-spacing: 0;
+    color: #223628;
+    text-align: center;
+    display: block;
+    vertical-align: middle;
+}
+
+.cta {
+    font-family: FuturaPTMedium, Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: .075em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: #223628;
+    text-align: center;
+    display: block;
+}
+
+.underline {
+    border-bottom: 3px solid #223628;
+    padding-top: 2px;
+}
+
+@media screen and (min-width: 981px) and (max-width: 1024px) {
+    .textbox {
+        width: 200px;
+        height: 200px;
+    }
+
+    .maintext {
+        font-size: 30px;
+    }
+
+    .cta {
+        font-size: 13px;
+    }
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 980px) {
+    .textbox {
+        top: 25%;
+        width: 200px;
+        height: 200px;
+        left: 5%;
+    }
+
+    .maintext {
+        font-size: 45px;
+    }
+
+    .cta {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #hero1 {
+        background-image: url('https://cdn.katespade.tech/na/assets/img/ks-homepage/JULY2019_Homepage_NA_Mobile_Hero.jpg');
+        background-size: 100% 100%;
+        width: 100%;
+        margin-bottom: 12%;
+    }
+
+    #hero1 .inner {
+        padding-top: 129.375%;
+    }
+
+    .textbox {
+        width: 200px;
+        height: 200px;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    .text {
+        top: 20%;
+    }
+
+    .maintext {
+        font-size: 50px;
+        color: #223628;
+    }
+
+    .cta {
+        font-size: 10px;
+        line-height: 0;
+    }
+}
+
+@media screen and (max-width: 980px) and (min-width: 481px){
+    .maintext {
+        font-size: 45px;
+    }
+}
+
+
+
+
+.multi-item-carousel {
+    overflow: hidden;
+}
+
+.multi-item-carousel .carousel-control-prev,
+.multi-item-carousel .carousel-control-next {
+    background: rgba(255, 255, 255, 0.5);
+    width: 20%;
+}
+
+.multi-item-carousel .carousel-inner {
+    width: 180%;
+    left: -40%;
+}
+
+.carousel-inner .carousel-item-right.active,
+.carousel-inner .carousel-item-next {
+    transform: translateX(33.33%);
+}
+
+.carousel-inner .carousel-item-left.active,
+.carousel-inner .carousel-item-prev {
+    transform: translateX(-33.33%)
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{
+    transform: translateX(0);
+}
+
+.item__third {
+    float: left;
+    width: 33.33333333%;
+    background-size: cover;
+}
+
+
+.carousel-img{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+
+.hero2 {
+    padding-bottom: 10%;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-top: 5%;
+    display: block;
+    position: relative;
+    background-color: #F8BACA;
+    margin-top: 80px;
+}
+
+.hero2 .bgimg {
+    padding-bottom: -20%;
+    width: 18.25%;
+}
+
+.hero2 .first {
+    margin-right: 1%;
+    margin-left: 1%;
+    background-image: url('https://cdn.katespade.tech/na/assets/img/ks-homepage/JULY2019_Homepage_NA_Clothing.jpg');
+}
+
+.hero2 .second {
+    margin-right: 1%;
+    background-image: url('https://cdn.katespade.tech/na/assets/img/ks-homepage/JULY2019_Homepage_NA_Jewelry.jpg');
+}
+
+.hero2 .third {
+    margin-right: 1%;
+    background-image: url(../img/index/denim.jpeg);
+}
+
+.hero2 .fourth {
+    background-image: url('https://cdn.katespade.tech/na/assets/img/ks-homepage/JULY2019_Homepage_NA_Handbags.jpg');
+}
+
+.hero2 .fifth {
+    margin-right: 1%;
+    margin-left: 1%;
+    background-image: url('https://cdn.katespade.tech/na/assets/img/ks-homepage/JULY2019_Homepage_NA_Accessories.jpg');
+}
+
+.hero2 .first .inner,
+.hero2 .second .inner,
+.hero2 .third .inner,
+.hero2 .fourth .inner,
+.hero2 .fifth .inner {
+    padding-top: 142.512%;
+}
+
+.hero2 .first span.ctatext {
+    padding-top: 5%;
+    left: 25%;
+    width: 50%;
+}
+
+.hero2 .second span.ctatext {
+    padding-top: 5%;
+    left: 25%;
+    width: 50%;
+}
+
+.hero2 .third span.ctatext {
+    padding-top: 5%;
+    left: 25%;
+    width: 50%;
+}
+
+.hero2 .fourth span.ctatext {
+    padding-top: 5%;
+    left: 25%;
+    width: 50%;
+}
+
+.hero2 .fifth span.ctatext {
+    padding-top: 5%;
+    left: 25%;
+    width: 50%;
+}
+
+@media screen and (max-width:480px) {
+    .hero2 .bgimg {
+        width: 48%;
+        padding-bottom: 20%;
+        margin-right: 0;
+    }
+
+    .hero2 .rowcontainer {
+        text-align: justify;
+    }
+
+    .hero2 .second,
+    .hero2 .fourth {
+        float: right;
+    }
+
+    .hero2 .fifth {
+        display: block;
+        left: 25%;
+    }
+
+    .hero2 .first {
+        margin-left: -3%;
+        margin-right: 0;
+    }
+
+    .hero2 .second {
+        margin-right: -3%;
+    }
+
+    .hero2 .third {
+        margin-right: 0;
+        margin-left: -3%;
+    }
+
+    .hero2 .fifth {
+        margin-right: 0;
+    }
+
+    .hero2 .fourth {
+        margin-right: -3%;
+    }
+
+    .hero2 {
+        padding-bottom: 15%;
+        padding-top: 15%;
+    }
+}
+
+.row {
+    width: 100%;
+}
+
+.maintext2 {
+    padding-bottom: 2%;
+    width: 100%;
+    margin: 0;
+    font-family: FuturaPTBook, Arial, sans-serif;
+    font-size: 25px;
+    line-height: .8;
+    letter-spacing: 0;
+    color: #223628;
+    text-align: center;
+    display: block;
+    vertical-align: middle;
+    position: absoute;
+}
+
+@media screen and (min-width: 481px) and (max-width:980px) {
+    .cta2 {
+        font-size: 13px;
+        line-height: 3.5;
+    }
+
+    .maintext2 {
+        font-size: 20px;
+    }
+
+}
+
+@media screen and (max-width:480px) {
+    .cta2 {
+        font-size: 10px;
+        top: 90%;
+    }
+
+    .maintext2 {
+        font-size: 15px;
+    }
+}
+
+.rowcontainer {
+    width: 80%;
+    margin: auto;
+}
+
+.center {
+    text-align: center;
+}
+
+.bgimg {
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    text-shadow: none;
+    color: transparent;
+    background-size: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.relative {
+    position: relative;
+}
+
+.cta2 {
+    font-family: FuturaPTMedium, Arial, sans-serif;
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    line-height: 4.5;
+    width: 100%;
+    position: absolute;
+    letter-spacing: .075em;
+    text-transform: uppercase;
+    color: #223628;
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23F8BACA' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+
+.carousel-control-next-icon{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23F8BACA' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3e%3c/svg%3e");
+}

@@ -1,0 +1,81 @@
+.contianer {
+
+    margin-top: 100px;
+}
+.newarrival {
+
+    background: #80315b;
+    width: 100px;
+    color:white;
+    font-size: 24px;
+    font-weight: bold;
+}
+.col-md-7 h2
+{
+    color: #555;
+}
+.stars {
+    width: 25%;
+}
+.price {
+    color: #c34a8a;
+    font-size: 26px;
+    font-weight: bold;
+}
+input {
+    border: 1px solid #ccc;
+    font-weight: bold;
+    width: 30px;
+}
+.cart {
+    background: #FE980F;
+    color:#ffffff;
+    margin-left: 20px;
+}
+
+.button_cart {
+    margin-top: 5%;
+    width: 40%;
+    padding: 3%;
+    border-radius: 40px;
+    outline: 0;
+    border: 0;
+    background-color: rgba(125, 231, 202, 1);
+    color: rgba(255, 255, 255, 1);
+    font: normal 300 1.3vw/3.0vw 'Raleway', sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.button_cart:hover, .button_prod.selected {
+    cursor: pointer;
+    background-color: rgba(92, 200, 170, 1);
+    transition: background-color 0.5s ease-out;
+}
+
+.div_siz {
+    margin: 3%;
+}
+
+.div_p_prod_i {
+    width: 100%;
+    margin-top: 0px;
+}
+
+.p_prod_i {
+    text-indent: 20px;
+    text-align: left;
+    color: rgba(71, 71, 71, 0.83);
+    font: normal 300 1.9vw/2.6vw 'Playfair Display', serif;
+    margin-top: 5px;
+}
+
+.hr_prod_i {
+    display: block;
+    color: rgba(71, 71, 71, 0.1);
+}
+
+.div_size {
+    height: auto;
+    margin: 3%;
+}

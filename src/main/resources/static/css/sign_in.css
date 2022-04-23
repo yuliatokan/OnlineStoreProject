@@ -1,0 +1,247 @@
+.sign-in {
+    position: relative;
+    margin: 20px auto;
+    width: 350px;
+    padding: 33px 25px 29px;
+    background: white;
+    border-bottom: 1px solid #c4c4c4;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.sign-in:before, .sign-up:after {
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: inherit;
+    border-bottom: 1px solid #d2d2d2;
+    border-radius: 4px;
+}
+
+.sign-in:after {
+    bottom: 3px;
+    border-color: #dcdcdc;
+}
+
+.sign-in-a {
+    margin-top: 15px;
+    margin-bottom: -10px;
+    text-align: center;
+    color: #aaa;
+    line-height: 35px;
+    font-size: 26px;
+    font-weight: 300;
+}
+
+.sign-in-title {
+    margin: -25px -25px 25px;
+    padding: 15px 25px;
+    line-height: 35px;
+    font-size: 26px;
+    font-weight: 300;
+    color: #aaa;
+    text-align: center;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.75);
+    background: #f7f7f7;
+}
+
+.sign-in-title:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: #c4e17f;
+    border-radius: 5px 5px 0 0;
+    background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+.input {
+    font-family: inherit;
+    color: inherit;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.sign-in-input {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 25px;
+    padding: 0 15px 2px;
+    font-size: 17px;
+    background: white;
+    border: 2px solid #ebebeb;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 -2px #ebebeb;
+    box-shadow: inset 0 -2px #ebebeb;
+}
+
+.sign-in-input-red {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 25px;
+    padding: 0 15px 2px;
+    font-size: 17px;
+    background: #ffeff6;
+    border: 2px solid #eb6184;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 -2px #eb6184;
+    box-shadow: inset 0 -2px #eb6184;
+}
+
+.sign-in-input:focus {
+    border-color: #909497;
+    outline: none;
+    -webkit-box-shadow: inset 0 -2px #909497;
+    box-shadow: inset 0 -2px #909497;
+}
+
+.lt-ie9 .sign-in-input {
+    line-height: 48px;
+}
+
+.sign-in-button {
+    position: relative;
+    vertical-align: top;
+    width: 100%;
+    height: 54px;
+    padding: 0;
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    background: #f0776c;
+    border: 0;
+    border-bottom: 2px solid #d76b60;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -2px #d76b60;
+    box-shadow: inset 0 -2px #d76b60;
+}
+
+.sign-in-button:focus {
+    outline: 0;
+}
+
+.sign-in-button:active {
+    top: 1px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+:-moz-placeholder {
+    color: #ccc;
+    font-weight: 300;
+}
+
+::-moz-placeholder {
+    color: #ccc;
+    opacity: 1;
+    font-weight: 300;
+}
+
+::-webkit-input-placeholder {
+    color: #ccc;
+    font-weight: 300;
+}
+
+:-ms-input-placeholder {
+    color: #ccc;
+    font-weight: 300;
+}
+
+::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+.red:-moz-placeholder {
+    color: #eb6184;
+    font-weight: 300;
+}
+
+.red::-moz-placeholder {
+    color: #eb6184;
+    opacity: 1;
+    font-weight: 300;
+}
+
+.red::-webkit-input-placeholder {
+    color: #eb6184;
+    font-weight: 300;
+}
+
+.red:-ms-input-placeholder {
+    color: #eb6184;
+    font-weight: 300;
+}
+
+.red::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+.ui-widget {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1.1em;
+}
+.ui-widget .ui-widget {
+    font-size: 1em;
+}
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1em;
+}
+
+.ui-widget-content {
+    border: 1px solid #dddddd;
+    background: rgb(255, 248, 254) 50% top repeat-x;
+    color: #333333;
+}
+.ui-widget-content a {
+    color: #333333;
+}
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+    border: none;
+    background: rgb(255, 248, 254) 50% top repeat-x;
+    font-weight: bold;
+    color: rgba(161, 61, 114, 0.86);
+}
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited {
+    color: #f8baca;
+    text-decoration: none;
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+    border: none;
+    background: rgb(255, 248, 254) 50% top repeat-x;
+    font-weight: bold;
+    color: rgba(161, 61, 114, 0.86);
+}
