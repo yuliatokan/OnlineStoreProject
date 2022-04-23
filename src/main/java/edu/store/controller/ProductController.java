@@ -7,7 +7,10 @@ import edu.store.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,20 +65,15 @@ public class ProductController {
     }
 
     @PostMapping(value = "/search")
-    public String search(Model model, @RequestParam(name = "search", required = true) String search) {
+    public String search(Model model, @RequestParam(name = "search") String search) {
         model.addAttribute("products", new ArrayList<ProductDTO>());
-        if (search == "") {
+        if (search.isEmpty()) {
             return "index";
         }
         List<ProductDTO> products = productService.getProducts(search);
         if (products.isEmpty()) {
             if (search.matches("[-+]?\\d+")) {
-                Long id = new Long(0);
-                try {
-                    id = Long.parseLong(search);
-                } catch (Exception e) {
-                }
-
+                Long id = Long.parseLong(search);
                 products = productService.getProducts(id);
                 if (products != null) {
                     model.addAttribute("products", products);

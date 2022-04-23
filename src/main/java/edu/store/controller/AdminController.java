@@ -11,10 +11,11 @@ import edu.store.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -75,7 +76,7 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/users")
     public String find_users(String search, Model model) {
-        List<UserDTO> users = new ArrayList<>();
+        List<UserDTO> users;
         if (search == null) {
             model.addAttribute("users", userService.getUsers());
             return "users";

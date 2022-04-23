@@ -5,7 +5,7 @@ function loadInfo() {
         .append($('<a href="/products" class="dropdown-item">').append('New Arrivals'))
         .append($('<div class="dropdown-divider">'));
 
-    $.get('/get_types', function (data) {
+    $.get('/get/types', function (data) {
         var i;
         for (i = 0; i < data.length; i++) {
             $('#types')
