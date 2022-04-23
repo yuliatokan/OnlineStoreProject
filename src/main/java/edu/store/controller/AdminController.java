@@ -33,19 +33,19 @@ public class AdminController {
     UserService userService;
 
     @RequestMapping(value = "/admin")
-    public String admin() {
+    public String adminView() {
         return "admin";
     }
 
     @RequestMapping(value = "/admin/add", method = RequestMethod.GET)
-    public String add_item_view(Model model) {
+    public String addItemView(Model model) {
         model.addAttribute("sizes", productSizeService.getProductSizes());
         model.addAttribute("types", productTypeService.getProductTypes());
         return "add_item";
     }
 
     @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
-    public String add_item(@RequestParam(name = "name") String name,
+    public String addItem(@RequestParam(name = "name") String name,
                            @RequestParam(name = "price") String price,
                            @RequestParam(name = "description") String desc,
                            @RequestParam("photo") MultipartFile[] files,
@@ -75,7 +75,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/users")
-    public String find_users(String search, Model model) {
+    public String findUsers(String search, Model model) {
         List<UserDTO> users;
         if (search == null) {
             model.addAttribute("users", userService.getUsers());
