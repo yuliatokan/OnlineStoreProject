@@ -4,7 +4,6 @@ import edu.store.dto.ProductDTO;
 import edu.store.entity.Product;
 import edu.store.entity.ProductSize;
 import edu.store.entity.ProductType;
-import edu.store.repository.CartRepository;
 import edu.store.repository.ProductRepository;
 import edu.store.repository.ProductSizeRepository;
 import edu.store.repository.ProductTypeRepository;
@@ -45,24 +44,20 @@ public class ProductService {
     @Transactional
     public ProductDTO getProductById(Long id) {
         Optional<Product> product = productRepository.findById(id);
-        if(!product.isPresent())
-            return null;
-        return product.get().toDTO();
+        return product.map(Product::toDTO).orElse(null);
     }
 
     @Transactional
     public Product getProduct(Long id) {
         Optional<Product> product = productRepository.findById(id);
-        if(!product.isPresent())
-            return null;
-        return product.get();
+        return product.orElse(null);
     }
 
     @Transactional
     public List<ProductDTO> getProducts(Long id) {
         Optional<Product> product = productRepository.findById(id);
         List<ProductDTO> products = new ArrayList<>();
-        if(!product.isPresent())
+        if (!product.isPresent())
             return null;
         products.add(product.get().toDTO());
         return products;
@@ -111,8 +106,8 @@ public class ProductService {
     public List<ProductDTO> getProductsByPrice(Integer price_from, Integer price_to) {
         final List<ProductDTO> result = new ArrayList<>();
         List<Product> products = productRepository.findAll();
-        for(Product product:products){
-            if(product.getPrice().compareTo(price_from)>=0 && product.getPrice().compareTo(price_to)<=0){
+        for (Product product : products) {
+            if (product.getPrice().compareTo(price_from) >= 0 && product.getPrice().compareTo(price_to) <= 0) {
                 result.add(product.toDTO());
             }
         }

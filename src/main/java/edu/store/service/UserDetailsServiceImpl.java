@@ -28,6 +28,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         Set<GrantedAuthority> roles = new HashSet<>();
         roles.add(new SimpleGrantedAuthority(userAccount.getRole().toString()));
 
-        return new User(userAccount.getEmail(), userAccount.getPassword(),roles);
+        return new User(userAccount.getEmail(), userAccount.getPassword(), roles);
     }
 }

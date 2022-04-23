@@ -6,7 +6,6 @@ import edu.store.repository.ProductTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,7 @@ public class ProductTypeService {
     }
 
     @Transactional
-    public List<ProductTypeDTO> getProductTypes(){
+    public List<ProductTypeDTO> getProductTypes() {
         final List<ProductTypeDTO> result = new ArrayList<>();
         List<ProductType> productTypes = productTypeRepository.findAll();
 
@@ -34,9 +33,8 @@ public class ProductTypeService {
     }
 
     @Transactional
-    public ProductType findProductTypeById(Long id){
+    public ProductType findProductTypeById(Long id) {
         Optional<ProductType> optionalProductType = productTypeRepository.findById(id);
-        ProductType productType = optionalProductType.get(); //проверить на не null
-        return productType;
+        return optionalProductType.orElse(null);
     }
 }
