@@ -1,13 +1,8 @@
 package edu.store.entity;
 
-import org.springframework.web.bind.annotation.SessionAttribute;
-
 import javax.persistence.*;
-import javax.servlet.http.HttpSession;
-import java.util.HashSet;
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "cart")
@@ -19,7 +14,6 @@ public class Cart {
     private Long id;
 
     @OneToOne
-    //@PrimaryKeyJoinColumn
     private UserAccount userAccount;
 
     @OneToMany(cascade = CascadeType.ALL,
@@ -29,7 +23,8 @@ public class Cart {
     @Column(name = "products_cost")
     private Integer productsCost;
 
-    public Cart(){}
+    public Cart() {
+    }
 
     public Cart(UserAccount userAccount, List<CartItem> cartItems, Integer productsCost) {
         this.userAccount = userAccount;

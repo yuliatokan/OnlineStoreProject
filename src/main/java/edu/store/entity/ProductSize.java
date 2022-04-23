@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "product_size")
 public class ProductSize {
+
     @Id
     @GeneratedValue
     @Column(name = "id", insertable = false, updatable = false, nullable = false)
@@ -20,13 +21,14 @@ public class ProductSize {
     @ManyToMany(mappedBy = "sizes")
     List<Product> products = new ArrayList<>();
 
-    public ProductSize(){}
+    public ProductSize() {
+    }
 
     public ProductSize(String name) {
         this.name = name;
     }
 
-    public ProductSizeDTO toDTO(){
+    public ProductSizeDTO toDTO() {
         return ProductSizeDTO.of(id, name);
     }
 

@@ -3,9 +3,9 @@ package edu.store.entity;
 import edu.store.dto.OrderDTO;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Date;
 
 @Entity
 @Table(name = "customer_order")
@@ -57,7 +57,7 @@ public class Order {
         this.delivery = delivery;
     }
 
-    public OrderDTO toDTO(){
+    public OrderDTO toDTO() {
         return OrderDTO.of(id, userAccount, orderedProducts, productsCost, dateCreated, status, phone, address, delivery);
     }
 
@@ -91,8 +91,8 @@ public class Order {
 
     public void setProductsCost() {
         int cost = 0;
-        for(OrderedProduct orderedProduct: orderedProducts){
-            cost+=orderedProduct.getQuantity()*orderedProduct.getProduct().getPrice();
+        for (OrderedProduct orderedProduct : orderedProducts) {
+            cost += orderedProduct.getQuantity() * orderedProduct.getProduct().getPrice();
         }
         productsCost = cost;
     }
