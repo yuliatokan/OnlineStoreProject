@@ -1,6 +1,5 @@
 package edu.store.config;
 
-import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -17,9 +16,7 @@ public class SocketTextHandlerUpdate extends TextWebSocketHandler {
 
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message)
-            throws InterruptedException, IOException {
-        String payload = message.getPayload();
-        JSONObject jsonObject = new JSONObject(payload);
+            throws IOException {
         for (WebSocketSession webSocketSession : sessions) {
             if (session != webSocketSession)
                 webSocketSession.sendMessage(new TextMessage("update"));
@@ -27,7 +24,7 @@ public class SocketTextHandlerUpdate extends TextWebSocketHandler {
     }
 
     @Override
-    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+    public void afterConnectionEstablished(WebSocketSession session) {
         sessions.add(session);
     }
 }
