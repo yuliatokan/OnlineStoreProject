@@ -1,7 +1,5 @@
 package edu.store.dto;
 
-import edu.store.entity.ProductType;
-
 public class ProductTypeDTO {
     Long id;
 
@@ -12,7 +10,7 @@ public class ProductTypeDTO {
         this.name = name;
     }
 
-    public static ProductTypeDTO of (Long id, String name){
+    public static ProductTypeDTO of(Long id, String name) {
         return new ProductTypeDTO(id, name);
     }
 

@@ -1,22 +1,23 @@
 package edu.store.dto;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class UserDTO {
     private long userId;
 
     @NotNull
-    @Pattern(regexp="^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]+$")
+    @Pattern(regexp = "^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]+$")
     private String email;
 
     @NotNull
-    //@Min(6)
     private String password;
 
 
     @Size(min = 3, max = 20)
     @NotNull
-    @Pattern(regexp="^[\\pL '-]+$")
+    @Pattern(regexp = "^[\\pL '-]+$")
     private String name;
 
     @Size(min = 9)
@@ -29,7 +30,7 @@ public class UserDTO {
         this.phone = phone;
     }
 
-    public static UserDTO of (String email, String password, String name, String phone){
+    public static UserDTO of(String email, String password, String name, String phone) {
         return new UserDTO(email, password, name, phone);
     }
 

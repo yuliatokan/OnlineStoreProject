@@ -3,7 +3,8 @@ package edu.store.dto;
 public class ResultDTO {
     private String status = "OK";
 
-    public ResultDTO() { }
+    public ResultDTO() {
+    }
 
     public String getStatus() {
         return status;

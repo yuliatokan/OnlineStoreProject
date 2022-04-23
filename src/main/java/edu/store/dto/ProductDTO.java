@@ -1,7 +1,5 @@
 package edu.store.dto;
 
-//import com.sun.istack.internal.NotNull;
-
 import edu.store.entity.ProductSize;
 
 import java.util.ArrayList;
@@ -10,17 +8,14 @@ import java.util.List;
 public class ProductDTO {
     private Long productId;
 
-    //@NotNull
     private String name;
 
-    //@NotNull
     private Integer price;
 
     private String description;
 
-    private List<ProductSizeDTO> productSizes = new ArrayList<>();
+    private List<ProductSizeDTO> productSizes;
 
-    //@NotNull
     private byte[][] photo;
 
     public ProductDTO(Long productId, String name, Integer price, String description, List<ProductSizeDTO> sizes, byte[][] photo) {
