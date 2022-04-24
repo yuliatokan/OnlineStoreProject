@@ -1,9 +1,7 @@
 package edu.store.dto;
 
-import edu.store.entity.ProductSize;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data

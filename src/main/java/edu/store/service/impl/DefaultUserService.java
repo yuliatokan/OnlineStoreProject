@@ -4,8 +4,9 @@ import edu.store.dto.UserDTO;
 import edu.store.entity.UserAccount;
 import edu.store.entity.UserRole;
 import edu.store.repository.UserRepository;
+import edu.store.service.UserService;
 import edu.store.utils.mappers.UserAccountMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,15 +16,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class DefaultUserService implements edu.store.service.UserService {
-    @Autowired
-    private UserRepository userRepository;
+@RequiredArgsConstructor
+public class DefaultUserService implements UserService {
 
-    @Autowired
-    private ShaPasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private UserAccountMapper userAccountMapper;
+    private final ShaPasswordEncoder passwordEncoder;
+
+    private final UserAccountMapper userAccountMapper;
 
     @Override
     @Transactional(readOnly = true)

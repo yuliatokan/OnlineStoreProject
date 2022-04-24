@@ -1,6 +1,7 @@
 package edu.store.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import edu.store.service.EmailSenderService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -8,9 +9,10 @@ import org.springframework.stereotype.Service;
 import javax.mail.internet.MimeMessage;
 
 @Service
-public class DefaultEmailSenderService implements edu.store.service.EmailSenderService {
-    @Autowired
-    private JavaMailSender sender;
+@RequiredArgsConstructor
+public class DefaultEmailSenderService implements EmailSenderService {
+
+    private final JavaMailSender sender;
 
     @Override
     public void sendWelcomeEmail(String email) {

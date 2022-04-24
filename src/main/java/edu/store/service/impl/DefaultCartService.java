@@ -3,14 +3,15 @@ package edu.store.service.impl;
 import edu.store.entity.Cart;
 import edu.store.repository.CartRepository;
 import edu.store.service.CartService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class DefaultCartService implements CartService {
-    @Autowired
-    private CartRepository cartRepository;
+
+    private final CartRepository cartRepository;
 
     @Override
     @Transactional

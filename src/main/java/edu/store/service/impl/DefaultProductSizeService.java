@@ -3,8 +3,9 @@ package edu.store.service.impl;
 import edu.store.dto.ProductSizeDTO;
 import edu.store.entity.ProductSize;
 import edu.store.repository.ProductSizeRepository;
+import edu.store.service.ProductSizeService;
 import edu.store.utils.mappers.ProductSizeMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,12 +13,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class DefaultProductSizeService implements edu.store.service.ProductSizeService {
-    @Autowired
-    private ProductSizeRepository productSizeRepository;
+@RequiredArgsConstructor
+public class DefaultProductSizeService implements ProductSizeService {
 
-    @Autowired
-    private ProductSizeMapper productSizeMapper;
+    private final ProductSizeRepository productSizeRepository;
+
+    private final ProductSizeMapper productSizeMapper;
 
     @Override
     @Transactional

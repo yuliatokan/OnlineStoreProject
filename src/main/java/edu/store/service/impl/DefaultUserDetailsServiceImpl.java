@@ -1,7 +1,8 @@
 package edu.store.service.impl;
 
 import edu.store.entity.UserAccount;
-import org.springframework.beans.factory.annotation.Autowired;
+import edu.store.service.UserDetailsServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -14,9 +15,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class DefaultUserDetailsServiceImpl implements UserDetailsService, edu.store.service.UserDetailsServiceImpl {
-    @Autowired
-    private DefaultUserService userService;
+@RequiredArgsConstructor
+public class DefaultUserDetailsServiceImpl implements UserDetailsService, UserDetailsServiceImpl {
+
+    private final DefaultUserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String email)

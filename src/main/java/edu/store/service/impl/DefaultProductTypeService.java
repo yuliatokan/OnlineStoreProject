@@ -3,23 +3,23 @@ package edu.store.service.impl;
 import edu.store.dto.ProductTypeDTO;
 import edu.store.entity.ProductType;
 import edu.store.repository.ProductTypeRepository;
+import edu.store.service.ProductTypeService;
 import edu.store.utils.mappers.ProductTypeMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class DefaultProductTypeService implements edu.store.service.ProductTypeService {
-    @Autowired
-    private ProductTypeRepository productTypeRepository;
+@RequiredArgsConstructor
+public class DefaultProductTypeService implements ProductTypeService {
 
-    @Autowired
-    private ProductTypeMapper productTypeMapper;
+    private final ProductTypeRepository productTypeRepository;
+
+    private final ProductTypeMapper productTypeMapper;
 
     @Override
     @Transactional

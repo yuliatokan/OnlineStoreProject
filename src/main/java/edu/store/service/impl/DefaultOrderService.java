@@ -5,7 +5,7 @@ import edu.store.entity.Order;
 import edu.store.repository.OrderRepository;
 import edu.store.service.OrderService;
 import edu.store.utils.mappers.OrderMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,12 +14,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class DefaultOrderService implements OrderService {
-    @Autowired
-    private OrderRepository orderRepository;
 
-    @Autowired
-    private OrderMapper orderMapper;
+    private final OrderRepository orderRepository;
+
+    private final OrderMapper orderMapper;
 
     @Override
     @Transactional

@@ -8,12 +8,8 @@ import edu.store.service.ProductService;
 import edu.store.service.ProductSizeService;
 import edu.store.service.ProductTypeService;
 import edu.store.service.UserService;
-import edu.store.service.impl.DefaultProductService;
-import edu.store.service.impl.DefaultProductSizeService;
-import edu.store.service.impl.DefaultProductTypeService;
-import edu.store.service.impl.DefaultUserService;
 import edu.store.ui.Pages;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,18 +20,16 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class AdminController {
-    @Autowired
-    ProductSizeService productSizeService;
 
-    @Autowired
-    ProductTypeService productTypeService;
+    private final ProductSizeService productSizeService;
 
-    @Autowired
-    ProductService productService;
+    private final ProductTypeService productTypeService;
 
-    @Autowired
-    UserService userService;
+    private final ProductService productService;
+
+    private final UserService userService;
 
     @RequestMapping(value = "/admin")
     public String adminView() {
@@ -51,11 +45,11 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
     public String addItem(@RequestParam(name = "name") String name,
-                           @RequestParam(name = "price") String price,
-                           @RequestParam(name = "description") String desc,
-                           @RequestParam("photo") MultipartFile[] files,
-                           @RequestParam(name = "sizeCheckBox") List<Long> sizes,
-                           @RequestParam(name = "typeRadios") Long type) {
+                          @RequestParam(name = "price") String price,
+                          @RequestParam(name = "description") String desc,
+                          @RequestParam("photo") MultipartFile[] files,
+                          @RequestParam(name = "sizeCheckBox") List<Long> sizes,
+                          @RequestParam(name = "typeRadios") Long type) {
         Integer product_price = Integer.parseInt(price);
         List<ProductSize> productSizes = productSizeService.findProductSizesByIds(sizes);
         ProductType productType = productTypeService.findProductTypeById(type);

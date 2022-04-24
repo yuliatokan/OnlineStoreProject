@@ -6,7 +6,7 @@ import edu.store.entity.UserRole;
 import edu.store.service.EmailSenderService;
 import edu.store.service.UserService;
 import edu.store.ui.Pages;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
@@ -24,18 +24,16 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
+@RequiredArgsConstructor
 public class UserController {
-    @Autowired
-    private UserService userService;
 
-    @Autowired
-    private ShaPasswordEncoder passwordEncoder;
+    private final UserService userService;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final ShaPasswordEncoder passwordEncoder;
 
-    @Autowired
-    private EmailSenderService emailSenderService;
+    private final AuthenticationManager authenticationManager;
+
+    private final EmailSenderService emailSenderService;
 
     @RequestMapping(value = "/")
     public String index(HttpSession session) {

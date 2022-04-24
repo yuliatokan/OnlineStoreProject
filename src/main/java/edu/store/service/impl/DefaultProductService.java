@@ -9,6 +9,7 @@ import edu.store.repository.ProductSizeRepository;
 import edu.store.repository.ProductTypeRepository;
 import edu.store.service.ProductService;
 import edu.store.utils.mappers.ProductMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -20,18 +21,16 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class DefaultProductService implements ProductService {
-    @Autowired
-    ProductRepository productRepository;
 
-    @Autowired
-    ProductTypeRepository productTypeRepository;
+    private final ProductRepository productRepository;
 
-    @Autowired
-    ProductSizeRepository productSizeRepository;
+    private final ProductTypeRepository productTypeRepository;
 
-    @Autowired
-    ProductMapper productMapper;
+    private final ProductSizeRepository productSizeRepository;
+
+    private final ProductMapper productMapper;
 
     @Override
     @Transactional

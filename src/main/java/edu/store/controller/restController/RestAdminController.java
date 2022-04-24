@@ -4,7 +4,7 @@ import edu.store.dto.PageCountDTO;
 import edu.store.dto.ProductDTO;
 import edu.store.dto.ResultDTO;
 import edu.store.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class RestAdminController {
     private static final int PAGE_SIZE = 5;
 
-    @Autowired
-    ProductService productService;
+    private final ProductService productService;
 
     @GetMapping("/count")
     public PageCountDTO count() {

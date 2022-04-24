@@ -2,7 +2,8 @@ package edu.store.service.impl;
 
 import edu.store.entity.ToDoList;
 import edu.store.repository.ToDoListRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import edu.store.service.ToDoListService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,9 +12,10 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class DefaultToDoListService implements edu.store.service.ToDoListService {
-    @Autowired
-    private ToDoListRepository toDoListRepository;
+@RequiredArgsConstructor
+public class DefaultToDoListService implements ToDoListService {
+
+    private final ToDoListRepository toDoListRepository;
 
     @Override
     @Transactional(readOnly = true)

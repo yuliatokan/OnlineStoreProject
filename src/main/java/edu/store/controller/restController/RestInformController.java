@@ -2,16 +2,17 @@ package edu.store.controller.restController;
 
 import edu.store.dto.ProductTypeDTO;
 import edu.store.service.ProductTypeService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class RestInformController {
-    @Autowired
-    private ProductTypeService productTypeService;
+
+    private final ProductTypeService productTypeService;
 
     @GetMapping(value = "/get/types")
     public List<ProductTypeDTO> getProductTypes() {
