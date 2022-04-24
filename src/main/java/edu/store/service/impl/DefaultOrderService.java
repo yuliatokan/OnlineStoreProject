@@ -3,18 +3,23 @@ package edu.store.service.impl;
 import edu.store.dto.OrderDTO;
 import edu.store.entity.Order;
 import edu.store.repository.OrderRepository;
+import edu.store.service.OrderService;
+import edu.store.utils.mappers.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-public class DefaultOrderService implements edu.store.service.OrderService {
+public class DefaultOrderService implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private OrderMapper orderMapper;
 
     @Override
     @Transactional
@@ -25,11 +30,9 @@ public class DefaultOrderService implements edu.store.service.OrderService {
     @Override
     @Transactional
     public List<OrderDTO> getAllOrders() {
-        final List<OrderDTO> result = new ArrayList<>();
         List<Order> orders = orderRepository.findAll();
 
-        orders.forEach((x) -> result.add(x.toDTO()));
-        return result;
+        return orders.stream().map(orderMapper::map).collect(Collectors.toList());
     }
 
     @Override
@@ -38,7 +41,7 @@ public class DefaultOrderService implements edu.store.service.OrderService {
         Optional<Order> order = orderRepository.findById(id);
         if (!order.isPresent())
             return null;
-        return order.get().toDTO();
+        return orderMapper.map(order.get());
     }
 
     @Override
@@ -52,10 +55,8 @@ public class DefaultOrderService implements edu.store.service.OrderService {
     @Override
     @Transactional
     public List<OrderDTO> findOrdersByStatus(String status) {
-        final List<OrderDTO> result = new ArrayList<>();
         List<Order> orders = orderRepository.findByStatus(status);
 
-        orders.forEach((x) -> result.add(x.toDTO()));
-        return result;
+        return orders.stream().map(orderMapper::map).collect(Collectors.toList());
     }
 }

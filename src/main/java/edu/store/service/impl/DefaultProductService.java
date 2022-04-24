@@ -7,6 +7,8 @@ import edu.store.entity.ProductType;
 import edu.store.repository.ProductRepository;
 import edu.store.repository.ProductSizeRepository;
 import edu.store.repository.ProductTypeRepository;
+import edu.store.service.ProductService;
+import edu.store.utils.mappers.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -15,9 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-public class DefaultProductService implements edu.store.service.ProductService {
+public class DefaultProductService implements ProductService {
     @Autowired
     ProductRepository productRepository;
 
@@ -26,6 +29,9 @@ public class DefaultProductService implements edu.store.service.ProductService {
 
     @Autowired
     ProductSizeRepository productSizeRepository;
+
+    @Autowired
+    ProductMapper productMapper;
 
     @Override
     @Transactional
@@ -36,18 +42,16 @@ public class DefaultProductService implements edu.store.service.ProductService {
     @Override
     @Transactional
     public List<ProductDTO> getProducts() {
-        final List<ProductDTO> result = new ArrayList<>();
         List<Product> products = productRepository.findAll();
 
-        products.forEach((x) -> result.add(x.toDTO()));
-        return result;
+        return products.stream().map(productMapper::map).collect(Collectors.toList());
     }
 
     @Override
     @Transactional
     public ProductDTO getProductById(Long id) {
         Optional<Product> product = productRepository.findById(id);
-        return product.map(Product::toDTO).orElse(null);
+        return product.map(productMapper::map).orElse(null);
     }
 
     @Override
@@ -64,7 +68,7 @@ public class DefaultProductService implements edu.store.service.ProductService {
         List<ProductDTO> products = new ArrayList<>();
         if (!product.isPresent())
             return null;
-        products.add(product.get().toDTO());
+        products.add(productMapper.map(product.get()));
         return products;
     }
 
@@ -76,7 +80,7 @@ public class DefaultProductService implements edu.store.service.ProductService {
         if (productType != null) {
             List<Product> products = productType.getProducts();
 
-            products.forEach((x) -> result.add(x.toDTO()));
+            products.forEach((x) -> result.add(productMapper.map(x)));
             return result;
         }
         return result;
@@ -86,7 +90,6 @@ public class DefaultProductService implements edu.store.service.ProductService {
     @Transactional
     public List<ProductDTO> getProducts(String type, List<String> sizes) {
         ProductType productType = productTypeRepository.findByName(type);
-        final List<ProductDTO> result = new ArrayList<>();
         List<Product> products;
 
         if (productType != null) {
@@ -105,8 +108,7 @@ public class DefaultProductService implements edu.store.service.ProductService {
             }
         }
 
-        products_ok.forEach((x) -> result.add(x.toDTO()));
-        return result;
+        return products_ok.stream().map(productMapper::map).collect(Collectors.toList());
     }
 
     @Override
@@ -116,7 +118,7 @@ public class DefaultProductService implements edu.store.service.ProductService {
         List<Product> products = productRepository.findAll();
         for (Product product : products) {
             if (product.getPrice().compareTo(price_from) >= 0 && product.getPrice().compareTo(price_to) <= 0) {
-                result.add(product.toDTO());
+                result.add(productMapper.map(product));
             }
         }
         return result;
@@ -131,12 +133,9 @@ public class DefaultProductService implements edu.store.service.ProductService {
     @Override
     @Transactional
     public List<ProductDTO> getProductsByPageable(Pageable pageable) {
-        List<ProductDTO> result = new ArrayList<>();
         List<Product> products = productRepository.findAll(pageable).getContent();
 
-        products.forEach((x) -> result.add(x.toDTO()));
-
-        return result;
+        return products.stream().map(productMapper::map).collect(Collectors.toList());
     }
 
     @Override

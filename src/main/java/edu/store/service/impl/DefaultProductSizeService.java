@@ -3,17 +3,21 @@ package edu.store.service.impl;
 import edu.store.dto.ProductSizeDTO;
 import edu.store.entity.ProductSize;
 import edu.store.repository.ProductSizeRepository;
+import edu.store.utils.mappers.ProductSizeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DefaultProductSizeService implements edu.store.service.ProductSizeService {
     @Autowired
     private ProductSizeRepository productSizeRepository;
+
+    @Autowired
+    private ProductSizeMapper productSizeMapper;
 
     @Override
     @Transactional
@@ -26,11 +30,9 @@ public class DefaultProductSizeService implements edu.store.service.ProductSizeS
     @Override
     @Transactional
     public List<ProductSizeDTO> getProductSizes() {
-        final List<ProductSizeDTO> result = new ArrayList<>();
         List<ProductSize> productSizes = productSizeRepository.findAll();
 
-        productSizes.forEach((x) -> result.add(x.toDTO()));
-        return result;
+        return productSizes.stream().map(productSizeMapper::map).collect(Collectors.toList());
     }
 
     @Override

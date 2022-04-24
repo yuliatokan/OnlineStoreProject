@@ -4,6 +4,7 @@ import edu.store.dto.UserDTO;
 import edu.store.entity.UserAccount;
 import edu.store.entity.UserRole;
 import edu.store.repository.UserRepository;
+import edu.store.utils.mappers.UserAccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DefaultUserService implements edu.store.service.UserService {
@@ -19,6 +21,9 @@ public class DefaultUserService implements edu.store.service.UserService {
 
     @Autowired
     private ShaPasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserAccountMapper userAccountMapper;
 
     @Override
     @Transactional(readOnly = true)
@@ -47,31 +52,25 @@ public class DefaultUserService implements edu.store.service.UserService {
     @Override
     @Transactional
     public List<UserDTO> getUsers() {
-        final List<UserDTO> users = new ArrayList<>();
         List<UserAccount> userAccounts = userRepository.findAll();
 
-        userAccounts.forEach((x) -> users.add(x.toDTO()));
-        return users;
+        return userAccounts.stream().map(userAccountMapper::map).collect(Collectors.toList());
     }
 
     @Override
     @Transactional
     public List<UserDTO> getUsersByPhone(String phone) {
-        final List<UserDTO> users = new ArrayList<>();
         List<UserAccount> userAccounts = userRepository.findByPhone(phone);
 
-        userAccounts.forEach((x) -> users.add(x.toDTO()));
-        return users;
+        return userAccounts.stream().map(userAccountMapper::map).collect(Collectors.toList());
     }
 
     @Override
     @Transactional
     public List<UserDTO> getUsersByName(String name) {
-        final List<UserDTO> users = new ArrayList<>();
         List<UserAccount> userAccounts = userRepository.findByName(name);
 
-        userAccounts.forEach((x) -> users.add(x.toDTO()));
-        return users;
+        return userAccounts.stream().map(userAccountMapper::map).collect(Collectors.toList());
     }
 
     @Override
@@ -80,7 +79,7 @@ public class DefaultUserService implements edu.store.service.UserService {
         final List<UserDTO> users = new ArrayList<>();
         UserAccount userAccount = userRepository.findByEmail(email);
         if (userAccount != null) {
-            users.add(userAccount.toDTO());
+            users.add(userAccountMapper.map(userAccount));
         }
         return users;
     }

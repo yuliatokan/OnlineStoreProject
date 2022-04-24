@@ -1,9 +1,15 @@
 package edu.store.entity;
 
 import edu.store.dto.OrderedProductDTO;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "ordered_product")
 public class OrderedProduct {
@@ -26,17 +32,10 @@ public class OrderedProduct {
     @Column(name = "quantity")
     private int quantity;
 
-    public OrderedProduct() {
-    }
-
     public OrderedProduct(Product product, ProductSize productSize, int quantity) {
         this.product = product;
         this.productSize = productSize;
         this.quantity = quantity;
-    }
-
-    public OrderedProductDTO toDTO() {
-        return OrderedProductDTO.of(id, product, productSize, quantity);
     }
 
     public Long getId() {

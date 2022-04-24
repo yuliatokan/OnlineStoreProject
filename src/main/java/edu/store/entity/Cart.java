@@ -1,9 +1,16 @@
 package edu.store.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "cart")
 public class Cart {
@@ -22,9 +29,6 @@ public class Cart {
 
     @Column(name = "products_cost")
     private Integer productsCost;
-
-    public Cart() {
-    }
 
     public Cart(UserAccount userAccount, List<CartItem> cartItems, Integer productsCost) {
         this.userAccount = userAccount;

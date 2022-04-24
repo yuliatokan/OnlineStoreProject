@@ -2,10 +2,12 @@ package edu.store.dto;
 
 import edu.store.entity.Product;
 import edu.store.entity.ProductSize;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class OrderedProductDTO {
     private Long id;
     private ProductDTO product;
@@ -17,12 +19,6 @@ public class OrderedProductDTO {
         this.product = product;
         this.productSize = productSize;
         this.quantity = quantity;
-    }
-
-    public static OrderedProductDTO of(Long id, Product product, ProductSize productSize, int quantity) {
-        ProductDTO productDTO = product.toDTO();
-        ProductSizeDTO productSizeDTO = productSize.toDTO();
-        return new OrderedProductDTO(id, productDTO, productSizeDTO, quantity);
     }
 
     public Long getId() {

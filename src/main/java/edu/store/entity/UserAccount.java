@@ -1,11 +1,17 @@
 package edu.store.entity;
 
 import edu.store.dto.UserDTO;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "user_account")
 public class UserAccount {
@@ -33,27 +39,12 @@ public class UserAccount {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-    public UserAccount() {
-    }
-
     public UserAccount(@Email String email, @Size(min = 6) String password, @Size(min = 3, max = 50) String name, @Size(min = 9) String phone, UserRole role) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.phone = phone;
         this.role = role;
-    }
-
-    public static UserAccount of(String email, String password, String name, String phone) {
-        return new UserAccount(email, password, name, phone, UserRole.USER);
-    }
-
-    public static UserAccount fromDTO(UserDTO userDTO) {
-        return UserAccount.of(userDTO.getEmail(), userDTO.getPassword(), userDTO.getName(), userDTO.getPhone());
-    }
-
-    public UserDTO toDTO() {
-        return UserDTO.of(email, password, name, phone);
     }
 
     public Long getId() {

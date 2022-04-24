@@ -3,6 +3,7 @@ package edu.store.service.impl;
 import edu.store.dto.ProductTypeDTO;
 import edu.store.entity.ProductType;
 import edu.store.repository.ProductTypeRepository;
+import edu.store.utils.mappers.ProductTypeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,11 +11,15 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class DefaultProductTypeService implements edu.store.service.ProductTypeService {
     @Autowired
     private ProductTypeRepository productTypeRepository;
+
+    @Autowired
+    private ProductTypeMapper productTypeMapper;
 
     @Override
     @Transactional
@@ -27,11 +32,9 @@ public class DefaultProductTypeService implements edu.store.service.ProductTypeS
     @Override
     @Transactional
     public List<ProductTypeDTO> getProductTypes() {
-        final List<ProductTypeDTO> result = new ArrayList<>();
         List<ProductType> productTypes = productTypeRepository.findAll();
 
-        productTypes.forEach((x) -> result.add(x.toDTO()));
-        return result;
+        return productTypes.stream().map(productTypeMapper::map).collect(Collectors.toList());
     }
 
     @Override

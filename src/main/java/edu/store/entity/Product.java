@@ -1,11 +1,17 @@
 package edu.store.entity;
 
 import edu.store.dto.ProductDTO;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "product")
 public class Product {
@@ -38,9 +44,6 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "size_id"))
     private List<ProductSize> sizes = new ArrayList<>();
 
-    public Product() {
-    }
-
     public Product(String name, Integer price, String description, byte[][] photo, ProductType productType, List<ProductSize> sizes) {
         this.name = name;
         this.price = price;
@@ -48,10 +51,6 @@ public class Product {
         this.photo = photo;
         this.productType = productType;
         this.sizes = sizes;
-    }
-
-    public ProductDTO toDTO() {
-        return ProductDTO.of(id, name, price, description, sizes, photo);
     }
 
     public List<ProductSize> getSizes() {
