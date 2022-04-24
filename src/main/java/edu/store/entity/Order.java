@@ -21,7 +21,7 @@ public class Order {
     private UserAccount userAccount;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,
-            targetEntity = OrderedProduct.class)//, mappedBy = "order")
+            targetEntity = OrderedProduct.class)
     private Set<OrderedProduct> orderedProducts = new HashSet<>(0);
 
     @Column(name = "products_cost", nullable = false)

@@ -11,7 +11,7 @@ import java.util.Set;
 public class OrderDTO {
     private Long orderId;
     private UserDTO user;
-    private Set<OrderedProductDTO> orderedProducts = new HashSet<>(0);
+    private Set<OrderedProductDTO> orderedProducts;
     private Date dateCreated;
     private int productsCost;
     private String status;
