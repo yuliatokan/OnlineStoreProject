@@ -1,9 +1,9 @@
 package edu.store.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 
 import javax.mail.internet.MimeMessage;
 
@@ -21,8 +21,7 @@ public class EmailSenderService {
             helper.setTo(email);
             helper.setSubject("Welcome to TOKANclothes");
             sender.send(message);
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }

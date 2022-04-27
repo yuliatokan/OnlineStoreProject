@@ -19,11 +19,8 @@ public class CartItem {
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Product product;
 
-    //@JoinColumn(name = "product_size_id", referencedColumnName = "id")
     @JoinColumns({
             @JoinColumn(name = "product_size_id", referencedColumnName = "id")
-            //@JoinColumn(name = "product_id", referencedColumnName = "id")
-
     })
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private ProductSize productSize;
@@ -31,7 +28,8 @@ public class CartItem {
     @Column(name = "quantity")
     private int quantity;
 
-    CartItem(){}
+    CartItem() {
+    }
 
     public CartItem(Cart cart, Product product, ProductSize productSize, int quantity) {
         this.cart = cart;

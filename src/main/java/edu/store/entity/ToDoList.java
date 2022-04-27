@@ -6,6 +6,7 @@ import java.util.Date;
 @Entity
 @Table(name = "to_do_list")
 public class ToDoList {
+
     @Id
     @GeneratedValue
     @Column(name = "id", insertable = false, updatable = false, nullable = false)

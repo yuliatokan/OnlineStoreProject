@@ -38,13 +38,13 @@ public class OrdersController {
     }
 
     @GetMapping("/orders/{status}")
-    public String orders_status(@PathVariable String status, Model model) {
+    public String getOrdersStatus(@PathVariable String status, Model model) {
         model.addAttribute("orders", orderService.findOrdersByStatus(status));
         return "orders";
     }
 
     @GetMapping(value = "/order/{id}")
-    public String orderInfo(Model model, @PathVariable Long id) {
+    public String getOrderInfo(Model model, @PathVariable Long id) {
         model.addAttribute("order", orderService.findOrderById(id));
         return "order_details";
     }

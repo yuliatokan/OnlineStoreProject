@@ -4,20 +4,19 @@ import edu.store.dto.UserDTO;
 import edu.store.entity.UserAccount;
 import edu.store.entity.UserRole;
 import edu.store.service.EmailSenderService;
-import edu.store.service.ProductTypeService;
 import edu.store.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -35,13 +34,10 @@ public class UserController {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private ProductTypeService productTypeService;
-
-    @Autowired
     private EmailSenderService emailSenderService;
 
     @RequestMapping(value = "/")
-    public String index(HttpSession session, Model model) {
+    public String index(HttpSession session) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
             String email = ((UserDetails) principal).getUsername();
@@ -60,9 +56,7 @@ public class UserController {
     }
 
     private boolean isAdmin(String role) {
-        if ("ROLE_ADMIN".equals(role))
-            return true;
-        return false;
+        return "ROLE_ADMIN".equals(role);
     }
 
     @RequestMapping("/2doList")
@@ -90,7 +84,7 @@ public class UserController {
 
         String passHash = passwordEncoder.encodePassword(password, null);
 
-        if ("".equals(email) ||
+        if (email.isEmpty() ||
                 !userService.addUser(email, passHash, name, phone, UserRole.USER)) {
             model.addAttribute("exists", true);
             model.addAttribute("email", email);

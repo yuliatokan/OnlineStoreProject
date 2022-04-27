@@ -153,7 +153,7 @@ function updateSumItems() {
 
 function removeItem(removeButton) {
     var productId = $(removeButton).parent().parent().attr('id');
-    $.post("/remove_item", {productId: productId}, function (data, status) {
+    $.post("/remove/item", {productId: productId}, function (data, status) {
         window.location.reload();
     });
 }

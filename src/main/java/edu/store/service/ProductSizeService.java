@@ -23,7 +23,7 @@ public class ProductSizeService {
     }
 
     @Transactional
-    public List<ProductSizeDTO> getProductSizes(){
+    public List<ProductSizeDTO> getProductSizes() {
         final List<ProductSizeDTO> result = new ArrayList<>();
         List<ProductSize> productSizes = productSizeRepository.findAll();
 
@@ -32,14 +32,13 @@ public class ProductSizeService {
     }
 
     @Transactional
-    public List<ProductSize> findProductSizesByIds(List<Long> ids){
-        List<ProductSize> productSizes = productSizeRepository.findAllById(ids);
-        return productSizes;
+    public List<ProductSize> findProductSizesByIds(List<Long> ids) {
+        return productSizeRepository.findAllById(ids);
     }
 
     @Transactional
-    public ProductSize findProductById(Long id){
-        return productSizeRepository.findById(id).get();
+    public ProductSize findProductById(Long id) {
+        return productSizeRepository.findById(id).orElse(null);
     }
 
 }

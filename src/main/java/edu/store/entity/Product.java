@@ -3,12 +3,8 @@ package edu.store.entity;
 import edu.store.dto.ProductDTO;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "product")
@@ -35,16 +31,6 @@ public class Product {
     @JoinColumn(name = "product_type_id")
     private ProductType productType;
 
-    /*@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-    @JoinTable(name = "product_size",
-            joinColumns = {
-                    @JoinColumn(name = "product_size_id")},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "product_id")})
-    private Set<ProductSize> sizes = new HashSet<>();*/
-
-    /*@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true,
-            targetEntity = ProductSize.class)//, mappedBy = "id")*/
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = ProductSize.class)
     @JoinTable(
             name = "products_sizes",
@@ -52,7 +38,8 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "size_id"))
     private List<ProductSize> sizes = new ArrayList<>();
 
-    public Product(){}
+    public Product() {
+    }
 
     public Product(String name, Integer price, String description, byte[][] photo, ProductType productType, List<ProductSize> sizes) {
         this.name = name;
@@ -63,7 +50,7 @@ public class Product {
         this.sizes = sizes;
     }
 
-    public ProductDTO toDTO(){
+    public ProductDTO toDTO() {
         return ProductDTO.of(id, name, price, description, sizes, photo);
     }
 

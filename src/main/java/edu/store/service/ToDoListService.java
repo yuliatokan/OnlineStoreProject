@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +18,7 @@ public class ToDoListService {
     @Transactional(readOnly = true)
     public List<ToDoList> getAllItems() {
         List<ToDoList> list = toDoListRepository.findAll();
-        Collections.sort(list, (x,y)->x.getNum()-y.getNum());
+        list.sort(Comparator.comparingInt(ToDoList::getNum));
         return list;
     }
 
@@ -29,19 +28,19 @@ public class ToDoListService {
     }
 
     @Transactional
-    public void updateItem(ToDoList toDoList){
+    public void updateItem(ToDoList toDoList) {
         toDoListRepository.save(toDoList);
     }
 
     @Transactional
     public void updateItem(Long id, int num_after) {
-        ToDoList item_for_update = toDoListRepository.findById(id).get();
+        ToDoList item_for_update = toDoListRepository.findById(id).orElse(null);
         int num_before = item_for_update.getNum();
 
         List<ToDoList> items = toDoListRepository.findAll();
-        for(ToDoList item: items ){
-            if(item.getNum()>=num_after && item.getNum()<num_before){
-                item.setNum(item.getNum()+1);
+        for (ToDoList item : items) {
+            if (item.getNum() >= num_after && item.getNum() < num_before) {
+                item.setNum(item.getNum() + 1);
                 toDoListRepository.save(item);
             }
         }
@@ -60,12 +59,12 @@ public class ToDoListService {
     }
 
     @Transactional
-    public void deleteItem(Long id){
+    public void deleteItem(Long id) {
         toDoListRepository.deleteById(id);
     }
 
     @Transactional
-    public ToDoList getItem(Long id){
-        return toDoListRepository.findById(id).get();
+    public ToDoList getItem(Long id) {
+        return toDoListRepository.findById(id).orElse(null);
     }
 }

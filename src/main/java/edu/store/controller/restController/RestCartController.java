@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
@@ -35,21 +37,21 @@ public class RestCartController {
 
     @PostMapping(value = "/buy")
     public int buy(@RequestParam(name = "productId", required = false) Long productId,
-                                         @RequestParam(name = "sizeId", required = false) Long sizeId,
-                                         HttpSession session) {
+                   @RequestParam(name = "sizeId", required = false) Long sizeId,
+                   HttpSession session) {
         Cart cart = (Cart) session.getAttribute("cart");
         CartItem cartItem = new CartItem(cart, productService.getProduct(productId), productSizeService.findProductById(sizeId), 1);
         cart.setCartItem(cartItem);
         return cart.getCartItems().size();
     }
 
-    @PostMapping(value = "/remove_item")
+    @PostMapping(value = "/remove/item")
     public ResponseEntity<ResultDTO> delete(@RequestParam(name = "productId", required = false) Long productId, HttpSession session) {
         if (productId != null && productId > 0) {
             Cart cart = (Cart) session.getAttribute("cart");
             List<CartItem> cartItems = cart.getCartItems();
             for (CartItem cartItem : cartItems) {
-                if (cartItem.getProduct().getId() == productId) {
+                if (cartItem.getProduct().getId().equals(productId)) {
                     cartItems.remove(cartItem);
                     break;
                 }
@@ -65,7 +67,7 @@ public class RestCartController {
             Cart cart = (Cart) session.getAttribute("cart");
             List<CartItem> cartItems = cart.getCartItems();
             for (CartItem cartItem : cartItems) {
-                if (cartItem.getProduct().getId() == productId) {
+                if (cartItem.getProduct().getId().equals(productId)) {
                     cartItem.setQuantity(quantity);
                     break;
                 }
@@ -104,7 +106,7 @@ public class RestCartController {
         return order.getId();
     }
 
-    @PostMapping("/update_status")
+    @PostMapping("/update/status")
     public void updateStatus(@RequestParam(value = "id") Long id, @RequestParam(value = "status") String status) {
         orderService.updateOrdersStatus(id, status);
     }

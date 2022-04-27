@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "product_type")
 public class ProductType {
+
     @Id
     @GeneratedValue
     @Column(name = "id", insertable = false, updatable = false, nullable = false)
@@ -25,9 +26,10 @@ public class ProductType {
         this.name = name;
     }
 
-    public ProductType(){ }
+    public ProductType() {
+    }
 
-    public ProductTypeDTO toDTO(){
+    public ProductTypeDTO toDTO() {
         return ProductTypeDTO.of(id, name);
     }
 

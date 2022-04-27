@@ -16,8 +16,6 @@ public class RestToDoListController {
     @Autowired
     private ToDoListService toDoListService;
 
-    private long last_time = 0;
-
     @GetMapping("/2DoList/get_all")
     public List<ToDoList> getAllItems() {
         return toDoListService.getAllItems();
@@ -65,7 +63,7 @@ public class RestToDoListController {
     }
 
     @PostMapping("/2DoList/delete")
-    public void deleteItem(@RequestParam(value = "id") Long id){
+    public void deleteItem(@RequestParam(value = "id") Long id) {
         toDoListService.deleteItem(id);
     }
 
@@ -77,22 +75,17 @@ public class RestToDoListController {
     @GetMapping("/2DoList/get_new")
     public List<ToDoList> getNewItems() {
         System.out.println("Start");
-        Long time = new Date().getTime();//время начала запроса
-        System.out.println(time);
-        System.out.println(new Date(time).toString());
+        Long time = new Date().getTime();
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
 
         Thread thread = Thread.currentThread();
-        service.scheduleAtFixedRate(new Runnable() {
-            @Override
-            public void run() {
-                List<ToDoList> newList = toDoListService.getNewItem(time);
-                if (newList != null && newList.size() != 0) {
-                    System.out.println(newList.get(0).getItem());
-                    System.out.println("ItemTome = "+newList.get(0).getTime());
-                    synchronized (thread) {
-                        thread.notify();
-                    }
+        service.scheduleAtFixedRate(() -> {
+            List<ToDoList> newList = toDoListService.getNewItem(time);
+            if (newList != null && newList.size() != 0) {
+                System.out.println(newList.get(0).getItem());
+                System.out.println("ItemTome = " + newList.get(0).getTime());
+                synchronized (thread) {
+                    thread.notify();
                 }
             }
         }, 0, 2, TimeUnit.SECONDS);
@@ -104,8 +97,6 @@ public class RestToDoListController {
             ie.printStackTrace();
         }
         service.shutdown();
-        System.out.println("End");
-        System.out.println(new Date().toString());
         return toDoListService.getNewItem(time);
     }
 }

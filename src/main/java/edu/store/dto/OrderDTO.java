@@ -4,12 +4,14 @@ import edu.store.entity.OrderedProduct;
 import edu.store.entity.UserAccount;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class OrderDTO {
     private Long orderId;
     private UserDTO user;
-    private Set<OrderedProductDTO> orderedProducts = new HashSet<>(0);
+    private Set<OrderedProductDTO> orderedProducts;
     private Date dateCreated;
     private int productsCost;
     private String status;
@@ -31,7 +33,7 @@ public class OrderDTO {
 
     public static OrderDTO of(Long id, UserAccount user, Set<OrderedProduct> orderedProducts, int productsCost, Date dateCreated, String status, String phone, String address, String delivery) {
         UserDTO userDTO = null;
-        if(user!=null) {
+        if (user != null) {
             userDTO = user.toDTO();
         }
 

@@ -10,7 +10,7 @@ public class ProductSizeDTO {
         this.name = name;
     }
 
-    public static ProductSizeDTO of (Long id, String name){
+    public static ProductSizeDTO of(Long id, String name) {
         return new ProductSizeDTO(id, name);
     }
 

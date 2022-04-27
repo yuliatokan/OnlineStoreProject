@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "user_account")
 public class UserAccount {
+
     @Id
     @GeneratedValue
     @Column(name = "id", insertable = false, updatable = false, nullable = false)
@@ -43,15 +44,15 @@ public class UserAccount {
         this.role = role;
     }
 
-    public static UserAccount of(String email, String password, String name, String phone){
-        return new UserAccount(email,password,name,phone,UserRole.USER);
+    public static UserAccount of(String email, String password, String name, String phone) {
+        return new UserAccount(email, password, name, phone, UserRole.USER);
     }
 
-    public static UserAccount fromDTO(UserDTO userDTO){
+    public static UserAccount fromDTO(UserDTO userDTO) {
         return UserAccount.of(userDTO.getEmail(), userDTO.getPassword(), userDTO.getName(), userDTO.getPhone());
     }
 
-    public UserDTO toDTO (){
+    public UserDTO toDTO() {
         return UserDTO.of(email, password, name, phone);
     }
 

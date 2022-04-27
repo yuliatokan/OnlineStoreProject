@@ -64,7 +64,7 @@
     function updateStatus(select) {
         var status = $(select).val();
         var id = $(select).parent().parent().attr('id');
-        $.post('/update_status', {status: status, id: id});
+        $.post('/update/status', {status: status, id: id});
     }
 </script>
 </body>

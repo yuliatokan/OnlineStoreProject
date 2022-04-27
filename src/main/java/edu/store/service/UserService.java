@@ -42,7 +42,7 @@ public class UserService {
     }
 
     @Transactional
-    public List<UserDTO> getUsers(){
+    public List<UserDTO> getUsers() {
         final List<UserDTO> users = new ArrayList<>();
         List<UserAccount> userAccounts = userRepository.findAll();
 
@@ -51,7 +51,7 @@ public class UserService {
     }
 
     @Transactional
-    public List<UserDTO> getUsersByPhone(String phone){
+    public List<UserDTO> getUsersByPhone(String phone) {
         final List<UserDTO> users = new ArrayList<>();
         List<UserAccount> userAccounts = userRepository.findByPhone(phone);
 
@@ -60,7 +60,7 @@ public class UserService {
     }
 
     @Transactional
-    public List<UserDTO> getUsersByName(String name){
+    public List<UserDTO> getUsersByName(String name) {
         final List<UserDTO> users = new ArrayList<>();
         List<UserAccount> userAccounts = userRepository.findByName(name);
 
@@ -69,17 +69,17 @@ public class UserService {
     }
 
     @Transactional
-    public List<UserDTO> getUsersByEmail(String email){
+    public List<UserDTO> getUsersByEmail(String email) {
         final List<UserDTO> users = new ArrayList<>();
         UserAccount userAccount = userRepository.findByEmail(email);
-        if(userAccount != null){
+        if (userAccount != null) {
             users.add(userAccount.toDTO());
         }
         return users;
     }
 
     @Transactional
-    public void updateUser(UserDTO userDTO){
+    public void updateUser(UserDTO userDTO) {
         UserAccount user = findByEmail(userDTO.getEmail());
 
         String passHash = passwordEncoder.encodePassword(userDTO.getPassword(), null);
