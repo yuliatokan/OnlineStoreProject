@@ -1,5 +1,8 @@
 package edu.store.dto;
 
+import lombok.Data;
+
+@Data
 public class ProductSizeDTO {
     private Long id;
 
@@ -8,10 +11,6 @@ public class ProductSizeDTO {
     public ProductSizeDTO(Long id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public static ProductSizeDTO of(Long id, String name) {
-        return new ProductSizeDTO(id, name);
     }
 
     public Long getId() {

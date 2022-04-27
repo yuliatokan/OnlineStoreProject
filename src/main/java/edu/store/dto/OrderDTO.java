@@ -2,12 +2,14 @@ package edu.store.dto;
 
 import edu.store.entity.OrderedProduct;
 import edu.store.entity.UserAccount;
+import lombok.Data;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 public class OrderDTO {
     private Long orderId;
     private UserDTO user;
@@ -29,17 +31,6 @@ public class OrderDTO {
         this.phone = phone;
         this.address = address;
         this.delivery = delivery;
-    }
-
-    public static OrderDTO of(Long id, UserAccount user, Set<OrderedProduct> orderedProducts, int productsCost, Date dateCreated, String status, String phone, String address, String delivery) {
-        UserDTO userDTO = null;
-        if (user != null) {
-            userDTO = user.toDTO();
-        }
-
-        Set<OrderedProductDTO> orderedProductsDTO = new HashSet<>(0);
-        orderedProducts.forEach((x) -> orderedProductsDTO.add(x.toDTO()));
-        return new OrderDTO(id, userDTO, orderedProductsDTO, dateCreated, productsCost, status, phone, address, delivery);
     }
 
     public Long getOrderId() {

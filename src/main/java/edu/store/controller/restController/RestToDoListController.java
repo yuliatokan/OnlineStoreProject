@@ -2,7 +2,7 @@ package edu.store.controller.restController;
 
 import edu.store.entity.ToDoList;
 import edu.store.service.ToDoListService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -12,9 +12,10 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 @RestController
+@RequiredArgsConstructor
 public class RestToDoListController {
-    @Autowired
-    private ToDoListService toDoListService;
+
+    private final ToDoListService toDoListService;
 
     @GetMapping("/2DoList/get_all")
     public List<ToDoList> getAllItems() {

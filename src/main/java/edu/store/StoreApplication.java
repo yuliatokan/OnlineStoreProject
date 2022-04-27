@@ -2,10 +2,10 @@ package edu.store;
 
 import edu.store.entity.Product;
 import edu.store.entity.UserRole;
-import edu.store.service.ProductService;
-import edu.store.service.ProductSizeService;
-import edu.store.service.ProductTypeService;
-import edu.store.service.UserService;
+import edu.store.service.impl.DefaultProductService;
+import edu.store.service.impl.DefaultProductSizeService;
+import edu.store.service.impl.DefaultProductTypeService;
+import edu.store.service.impl.DefaultUserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -41,14 +41,14 @@ public class StoreApplication {
     }
 
     @Bean
-    public CommandLineRunner addAdmin(final UserService userService) {
+    public CommandLineRunner addAdmin(final DefaultUserService userService) {
         return strings -> {
             userService.addUser("admin@gmail.com", "8cb2237d0679ca88db6464eac60da96345513964", "Admin", "123", UserRole.ADMIN); //12345
         };
     }
 
     @Bean
-    public CommandLineRunner addProductSize(final ProductSizeService productSizeService) {
+    public CommandLineRunner addProductSize(final DefaultProductSizeService productSizeService) {
         return strings -> {
             productSizeService.addProductSize("XS");
             productSizeService.addProductSize("S");
@@ -60,7 +60,7 @@ public class StoreApplication {
     }
 
     @Bean
-    public CommandLineRunner addProductType(final ProductTypeService productTypeService) {
+    public CommandLineRunner addProductType(final DefaultProductTypeService productTypeService) {
         return strings -> {
             productTypeService.addProductType("Dresses");
             productTypeService.addProductType("Overalls");
@@ -75,7 +75,7 @@ public class StoreApplication {
     }
 
     @Bean
-    public CommandLineRunner addProduct(final ProductService productService, final ProductTypeService productTypeService, final ProductSizeService productSizeService) {
+    public CommandLineRunner addProduct(final DefaultProductService productService, final DefaultProductTypeService productTypeService, final DefaultProductSizeService productSizeService) {
         return strings -> {
             List<Long> sizes = new ArrayList<>();
             sizes.add(2L);

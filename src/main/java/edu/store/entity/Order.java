@@ -1,12 +1,18 @@
 package edu.store.entity;
 
 import edu.store.dto.OrderDTO;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "customer_order")
 public class Order {
@@ -43,9 +49,6 @@ public class Order {
     @Column(name = "delivery", nullable = false)
     private String delivery;
 
-    public Order() {
-    }
-
     public Order(UserAccount userAccount, Set<OrderedProduct> orderedProducts, Date dateCreated, String status, String phone, String address, String delivery) {
         this.userAccount = userAccount;
         this.orderedProducts = orderedProducts;
@@ -55,10 +58,6 @@ public class Order {
         this.phone = phone;
         this.address = address;
         this.delivery = delivery;
-    }
-
-    public OrderDTO toDTO() {
-        return OrderDTO.of(id, userAccount, orderedProducts, productsCost, dateCreated, status, phone, address, delivery);
     }
 
     public Long getId() {

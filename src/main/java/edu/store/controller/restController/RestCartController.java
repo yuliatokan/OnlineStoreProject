@@ -3,7 +3,7 @@ package edu.store.controller.restController;
 import edu.store.dto.ResultDTO;
 import edu.store.entity.*;
 import edu.store.service.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,21 +19,18 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
+@RequiredArgsConstructor
 public class RestCartController {
-    @Autowired
-    private ProductService productService;
 
-    @Autowired
-    private ProductSizeService productSizeService;
+    private final ProductService productService;
 
-    @Autowired
-    private OrderedProductService orderedProductService;
+    private final ProductSizeService productSizeService;
 
-    @Autowired
-    private UserService userService;
+    private final OrderedProductService orderedProductService;
 
-    @Autowired
-    private OrderService orderService;
+    private final UserService userService;
+
+    private final OrderService orderService;
 
     @PostMapping(value = "/buy")
     public int buy(@RequestParam(name = "productId", required = false) Long productId,

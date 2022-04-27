@@ -1,8 +1,15 @@
 package edu.store.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "to_do_list")
 public class ToDoList {
@@ -26,9 +33,6 @@ public class ToDoList {
 
     @Column(name = "done", nullable = false)
     private Boolean done;
-
-    ToDoList() {
-    }
 
     public ToDoList(int num, String item, Date date, Long time) {
         this.num = num;

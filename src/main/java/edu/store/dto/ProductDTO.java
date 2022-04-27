@@ -1,10 +1,10 @@
 package edu.store.dto;
 
-import edu.store.entity.ProductSize;
+import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class ProductDTO {
     private Long productId;
 
@@ -25,12 +25,6 @@ public class ProductDTO {
         this.description = description;
         this.productSizes = sizes;
         this.photo = photo;
-    }
-
-    public static ProductDTO of(Long id, String name, Integer price, String description, List<ProductSize> sizes, byte[][] photo) {
-        List<ProductSizeDTO> result = new ArrayList<>();
-        sizes.forEach((x) -> result.add(x.toDTO()));
-        return new ProductDTO(id, name, price, description, result, photo);
     }
 
     public long getProductId() {

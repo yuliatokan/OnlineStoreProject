@@ -1,11 +1,17 @@
 package edu.store.entity;
 
 import edu.store.dto.ProductSizeDTO;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "product_size")
 public class ProductSize {
@@ -21,15 +27,8 @@ public class ProductSize {
     @ManyToMany(mappedBy = "sizes")
     List<Product> products = new ArrayList<>();
 
-    public ProductSize() {
-    }
-
     public ProductSize(String name) {
         this.name = name;
-    }
-
-    public ProductSizeDTO toDTO() {
-        return ProductSizeDTO.of(id, name);
     }
 
     public Long getId() {

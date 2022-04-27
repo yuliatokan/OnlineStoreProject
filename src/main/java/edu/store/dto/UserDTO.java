@@ -1,9 +1,12 @@
 package edu.store.dto;
 
+import lombok.Data;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@Data
 public class UserDTO {
     private long userId;
 
@@ -28,10 +31,6 @@ public class UserDTO {
         this.password = password;
         this.name = name;
         this.phone = phone;
-    }
-
-    public static UserDTO of(String email, String password, String name, String phone) {
-        return new UserDTO(email, password, name, phone);
     }
 
     public long getUserId() {
